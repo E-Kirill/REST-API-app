@@ -1,0 +1,13 @@
+{
+    "plugins": ["node"],
+    "extends": "google",
+    "parserOptions": {
+        "ecmaVersion": 6
+    },
+    "rules":{
+        "no-var":"warn",
+        "one-var":["off","never"],
+        "no-unused-vars":"off",
+        "max-len":["warn"]
+    }
+}
