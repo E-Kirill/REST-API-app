@@ -2,23 +2,23 @@
 let mongoose = require('mongoose');
 
 let PostSchema = new mongoose.Schema({
-  author: {
+  author: { // post author
     type: String,
     required: true
   },
-  topic: {
+  topic: { // post title
     type: String,
     required: true
   },
-  text: {
+  text: { // post content
     type: String,
     required: true
   },
-  date: {
+  date: { // date of creation
     type: Date,
     default: Date.now 
   },
-  comments: [String]
+  comments: [String] // own comments
 });
 
 let Post = mongoose.model('Post', PostSchema);

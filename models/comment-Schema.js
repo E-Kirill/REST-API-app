@@ -2,23 +2,23 @@
 let mongoose = require('mongoose');
 
 let CommentSchema = new mongoose.Schema({
-  author: {
+  author: {// author id
     type: String,
     required: true
   },
-  text: {
+  text: { // content of comment
     type: String,
     required: true
   },
-  articleId:{ 
+  articleId:{ // parent
     type: String,
     required:true
   },
-  date: {
+  date: { // date of creation
     type: Date,
     default: Date.now 
   },
-  answers: [{
+  answers: [{ // nested comments
       id: String,
       default: ""
   }]

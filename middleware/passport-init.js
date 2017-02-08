@@ -21,15 +21,15 @@ module.exports = () => {
     }));
 
         passport.serializeUser((user, done)  => {
-        done(null, user.id);
+            done(null, user.id);
         });
 
 
         passport.deserializeUser((id, done) =>  {
-        User.findById(id, (err,user) => {
-            err 
-            ? done(err)
-            : done(null,user);
+            User.findById(id, (err,user) => {
+                err 
+                ? done(err)
+                : done(null,user);
+            });
         });
-    });
 };
