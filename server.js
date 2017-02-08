@@ -36,7 +36,7 @@ let login = require('./middleware/auth-controllers').login,
 
 // connecting mongoDB
 let mongoose = require('mongoose');
-    mongoose.connect('mongodb://' + dbPORT + '/test');
+    mongoose.connect('mongodb://ds145649.mlab.com:45649/heroku_fv5lbqz3');
 let db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error:'));
     db.once('open', () => {
