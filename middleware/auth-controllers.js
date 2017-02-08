@@ -4,10 +4,7 @@ let passport       = require('passport'),
     mongoose = require('mongoose'),
     User = require('../models/user-Schema').User,
     // redis index;
-    index = 0,
-    redisInit = require('./redisStorage').redisInit(),
-    addSession = require('./redisStorage').addSession,
-    lookSession = require('./redisStorage').lookSession;
+    index = 0;
 
 module.exports.login = (req, res, next) => {
   passport.authenticate('local',
