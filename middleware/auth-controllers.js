@@ -2,7 +2,7 @@
 let passport       = require('passport'),
     LocalStrategy  = require('passport-local').Strategy,
     mongoose = require('mongoose'),
-    User = require('/var/www/blog-test-app/models/user-Schema').User;
+    User = require('../models/user-Schema').User;
 
 module.exports.login = (req, res, next) => {
   passport.authenticate('local',
