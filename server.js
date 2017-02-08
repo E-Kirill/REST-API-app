@@ -4,7 +4,7 @@ let express = require('express'),
 
     PORT = require('./config/mainconfig').PORT,
     dbPORT = require('./config/mainconfig').dbPORT;
-
+ 
 // dependencies
 let passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
@@ -15,9 +15,13 @@ let passport = require('passport'),
     app.use(bodyParser.urlencoded({extended: true}));
     // parse application/json
     app.use(bodyParser.json());
-
+let redis = require("redis"),
+    RedisStore = require('connect-redis')(session);
     app.use(cookieParser());
-    app.use(session({secret: 'SECRET'}));
+    app.use(session({
+        secret: 'SECRET',
+        store:new RedisStore
+    }));
     // passport init
     app.use(passport.initialize());
     app.use(passport.session());

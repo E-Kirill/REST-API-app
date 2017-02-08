@@ -2,7 +2,12 @@
 let passport       = require('passport'),
     LocalStrategy  = require('passport-local').Strategy,
     mongoose = require('mongoose'),
-    User = require('../models/user-Schema').User;
+    User = require('../models/user-Schema').User,
+    // redis index;
+    index = 0,
+    redisInit = require('./redisStorage').redisInit(),
+    addSession = require('./redisStorage').addSession,
+    lookSession = require('./redisStorage').lookSession;
 
 module.exports.login = (req, res, next) => {
   passport.authenticate('local',
@@ -13,7 +18,11 @@ module.exports.login = (req, res, next) => {
           ? req.logIn(user, (err) =>  {
               return err
                 ? next(err)
-                : res.sendStatus(200);
+                : ()=>{
+                  addSession(index,user);
+                  index++;
+                  res.sendStatus(200);
+                };
             })
           : res.sendStatus(401);
     }
